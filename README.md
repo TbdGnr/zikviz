@@ -31,6 +31,16 @@ npx serve .
 
 Puis ouvrir http://localhost:3000
 
+## Démos
+
+Exemples de vidéos générées avec Zikviz (dossier `demos/`) :
+
+| Fichier | Description |
+|---------|-------------|
+| [bamboo.mp4](demos/bamboo.mp4) | Démos bamboo |
+| [cobra.mp4](demos/cobra.mp4) | Démos cobra |
+| [onryo.mp4](demos/onryo.mp4) | Démos onryo |
+
 ## Format de sortie
 
 La vidéo est exportée en WebM (VP9 + Opus). Pour convertir en MP4 :
