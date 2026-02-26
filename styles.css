@@ -1,0 +1,397 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0f0f14;
+  --bg-panel: #16161e;
+  --accent: #7c3aed;
+  --accent-hover: #8b5cf6;
+  --text: #e4e4e7;
+  --text-muted: #71717a;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  background: var(--bg-dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.controls {
+  width: 280px;
+  padding: 1.5rem;
+  background: var(--bg-panel);
+  border-right: 1px solid #27272a;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gradient-type-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gradient-type-buttons button {
+  flex: 1;
+  min-width: 60px;
+  padding: 0.4rem 0.5rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.gradient-type-buttons button:hover {
+  background: #3f3f46;
+}
+
+.gradient-type-buttons button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.color-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.color-row input[type="color"] {
+  flex: 1;
+}
+
+.wave-orientation-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.wave-orientation-buttons button {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.wave-orientation-buttons button:hover {
+  background: #3f3f46;
+}
+
+.wave-orientation-buttons button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.wave-color-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.wave-color-row .wave-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  min-width: 60px;
+}
+
+.wave-color-row input[type="color"] {
+  flex: 1;
+  height: 32px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.control-row:last-child {
+  margin-bottom: 0;
+}
+
+.control-row label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  min-width: 70px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.control-row input[type="range"] {
+  flex: 1;
+}
+
+.control-row span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  min-width: 2.5rem;
+}
+
+input[type="file"] {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+input[type="file"]::file-selector-button {
+  padding: 0.4rem 0.8rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-right: 0.5rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--accent-hover);
+}
+
+.file-name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.format-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.format-buttons button {
+  flex: 1;
+  padding: 0.5rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.format-buttons button:hover {
+  background: #3f3f46;
+}
+
+.format-buttons button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  background: #27272a;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#sensitivity-value {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.actions button {
+  flex: 1;
+  min-width: 100px;
+  padding: 0.6rem 1rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.actions button:hover:not(:disabled) {
+  background: #3f3f46;
+}
+
+.actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#play-btn {
+  background: #166534;
+  border-color: #166534;
+}
+
+#play-btn:hover:not(:disabled) {
+  background: #15803d;
+}
+
+#export-btn {
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+#export-btn:hover:not(:disabled) {
+  background: #8b5cf6;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+.ffmpeg-section {
+  margin-top: 1rem;
+}
+
+.ffmpeg-section label {
+  margin-bottom: 0.5rem;
+}
+
+.convert-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.convert-row input[type="file"] {
+  flex: 1;
+}
+
+.ffmpeg-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.ffmpeg-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ffmpeg-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.ffmpeg-cmd {
+  flex: 1;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  background: #27272a;
+  border-radius: 4px;
+  color: #a1a1aa;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.ffmpeg-row button {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: var(--text);
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ffmpeg-row button:hover {
+  background: #3f3f46;
+}
+
+.preview-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #0a0a0d;
+}
+
+.canvas-wrapper {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+  /* Force le ratio du cadre selon le format (géré par JS) */
+  line-height: 0;
+}
+
+#canvas {
+  display: block;
+  background: #000;
+  /* Dimensions définies en JS (resizeCanvas) pour respecter 9:16 ou 16:9 */
+}

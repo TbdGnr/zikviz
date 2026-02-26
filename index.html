@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zikviz - Music Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="controls">
+      <h1>Zikviz</h1>
+      <p class="subtitle">Visualiseur musical</p>
+
+      <div class="control-group">
+        <label>Fond</label>
+        <div class="gradient-type-buttons">
+          <button type="button" data-gradient="radial" class="active">Radial</button>
+          <button type="button" data-gradient="horizontal">Horizontal</button>
+          <button type="button" data-gradient="vertical">Vertical</button>
+          <button type="button" data-gradient="diagonal">Diagonal</button>
+        </div>
+        <div class="color-row">
+          <input type="color" id="bg-color" value="#1a1a2e" title="Couleur 1">
+          <input type="color" id="bg-color-2" value="#16213e" title="Couleur 2">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Format</label>
+        <div class="format-buttons">
+          <button type="button" data-format="9-16" class="active">9:16</button>
+          <button type="button" data-format="16-9">16:9</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="png-input">Image PNG (transparent)</label>
+        <input type="file" id="png-input" accept="image/png">
+        <span class="file-name" id="png-name">Aucun fichier</span>
+      </div>
+
+      <div class="control-group">
+        <label for="wav-input">Audio WAV</label>
+        <input type="file" id="wav-input" accept="audio/wav,audio/wave,.wav,audio/mpeg,audio/mp3">
+        <span class="file-name" id="wav-name">Aucun fichier</span>
+      </div>
+
+      <div class="control-group">
+        <label for="bass-sensitivity">Sensibilité basses</label>
+        <input type="range" id="bass-sensitivity" min="0.5" max="3" step="0.1" value="1.5">
+        <span id="sensitivity-value">1.5</span>
+      </div>
+
+      <div class="control-group">
+        <label for="attack-speed">Vitesse grossissement</label>
+        <input type="range" id="attack-speed" min="0.1" max="1" step="0.05" value="0.5">
+        <span id="attack-value">0.5</span>
+      </div>
+
+      <div class="control-group">
+        <label for="release-speed">Vitesse rétrécissement</label>
+        <input type="range" id="release-speed" min="0.02" max="0.4" step="0.01" value="0.12">
+        <span id="release-value">0.12</span>
+      </div>
+
+      <div class="control-group">
+        <label for="shake-intensity">Intensité tremblement</label>
+        <input type="range" id="shake-intensity" min="0" max="15" step="0.5" value="5">
+        <span id="shake-value">5</span>
+      </div>
+
+      <div class="control-group">
+        <label for="base-scale">Taille de base</label>
+        <input type="range" id="base-scale" min="0.4" max="0.95" step="0.05" value="0.7">
+        <span id="base-scale-value">0.7</span>
+      </div>
+
+      <div class="control-group">
+        <label for="pulse-range">Amplitude du pulse</label>
+        <input type="range" id="pulse-range" min="0.05" max="0.5" step="0.05" value="0.25">
+        <span id="pulse-range-value">0.25</span>
+      </div>
+
+      <div class="control-group">
+        <label for="wave-clip-margin">Marge du masque wave</label>
+        <input type="range" id="wave-clip-margin" min="-80" max="80" step="5" value="0">
+        <span id="wave-clip-value">0</span>
+      </div>
+
+      <div class="control-group">
+        <label>Wave</label>
+        <div class="wave-orientation-buttons">
+          <button type="button" data-orientation="vertical" class="active">Verticale</button>
+          <button type="button" data-orientation="horizontal">Horizontale</button>
+        </div>
+        <div class="wave-color-row">
+          <span class="wave-label">Couleur</span>
+          <input type="color" id="wave-color" value="#ffffff">
+        </div>
+        <div class="control-row">
+          <label for="wave-amplitude">Amplitude</label>
+          <input type="range" id="wave-amplitude" min="0.02" max="0.5" step="0.01" value="0.15">
+          <span id="wave-amplitude-value">0.15</span>
+        </div>
+        <div class="control-row">
+          <label for="wave-thickness">Épaisseur</label>
+          <input type="range" id="wave-thickness" min="1" max="10" step="0.5" value="2">
+          <span id="wave-thickness-value">2</span>
+        </div>
+        <div class="control-row">
+          <label for="wave-glow">Glow</label>
+          <input type="range" id="wave-glow" min="0" max="40" step="1" value="12">
+          <span id="wave-glow-value">12</span>
+        </div>
+      </div>
+
+      <div class="control-group actions">
+        <button type="button" id="play-btn" disabled>Prévisualiser</button>
+        <button type="button" id="stop-btn" disabled>Arrêter</button>
+        <button type="button" id="export-btn" disabled>Exporter vidéo</button>
+      </div>
+
+      <p class="hint" id="status">Chargez une image et un audio pour commencer</p>
+
+      <div class="control-group ffmpeg-section">
+        <label>Conversion MP4</label>
+        <div class="convert-row">
+          <input type="file" id="webm-input" accept=".webm,video/webm">
+          <button type="button" id="convert-btn">Convertir en MP4</button>
+        </div>
+        <p class="ffmpeg-hint">Conversion dans le navigateur, sans installation. Premier clic : chargement ~30 Mo.</p>
+      </div>
+    </aside>
+
+    <main class="preview-area">
+      <div class="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
